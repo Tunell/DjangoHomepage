@@ -1,0 +1,30 @@
+﻿{% extends "bas.html" %}
+
+{% block title %}Team-Flashkick - Skriv en nyhet{% endblock %}
+
+{% block content %}
+			<form enctype="multipart/form-data" action="/guestbook/" method="post">{% csrf_token %}
+				{{ form.as_p }}
+				<input type="submit" value="Skicka gästboksinlägg" />
+			</form>
+			{% for guestbookpost in posts.object_list %}
+		<div class="news_text"><rubrik>Skapad av {{ guestbookpost.nick }}</rubrik>
+			<datum>: {{ guestbookpost.pub_date }}</datum>
+			<a href="mailto:{{ guestbookpost.email }}" title="{{ guestbookpost.email }}"><img src="/site_media/mail.jpg" width="32" height="23" alt="{{ guestbookpost.email }}" /></a>
+		    <br>
+            <div class="text">{{ guestbookpost.text }}</div>
+		</div>
+	{% endfor %}
+
+<div class="pagination">
+    <span class="step-links">
+        {% if posts.has_previous %}
+            <a href="?page={{ posts.previous_page_number }}">Visa nyare inlägg</a>
+        {% endif %}
+
+        {% if posts.has_next %}
+            <a href="?page={{ posts.next_page_number }}">Visa äldre inlägg</a>
+        {% endif %}
+    </span>
+</div>
+{% endblock %}

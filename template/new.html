@@ -1,0 +1,35 @@
+{% extends "bas.html" %}
+
+{% block title %}Team-Flashkick Blog - {{ news.titel }} {% endblock %}
+
+{% block content %}
+
+	<div class="post">
+		<a href= />Back</a><br>
+		<rubrik>{{ news.titel|safe }}</rubrik><br>
+		<datum>
+			{% if news.pub_date != news.up_date %}
+			Uppdaterad:{{ news.up_date }}<br>
+			{% else %}
+			Publicerad:{{ news.pub_date }}<br>
+			{% endif %}
+	<br></datum>
+	<div class="text">{{ news.body|safe }}</div><br>
+	</div>
+	<div class="text">
+	{% if request.user.is_authenticated %}
+		<form type="POST" action="/uppdateNews/">
+			Titel<br>
+				<TEXTAREA NAME="titel" COLS=30 ROWS=1 WRAP="virtual">{{ news.titel|safe}}</TEXTAREA><br>
+			Text<br>
+			<textarea id="editor1" name="body">&lt;p&gt;{{ news.body|safe}}&lt;/p&gt;</textarea>
+			<script type="text/javascript">
+				CKEDITOR.replace( 'editor1' );
+			</script>
+			<input type="hidden" name="id" value= "{{news.id}}">
+				<input type="submit" value="Uppdatera innleg"/>
+        </form>
+	{% else %}
+	{% endif %}
+	</div>
+{% endblock %}

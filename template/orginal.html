@@ -1,0 +1,58 @@
+﻿<html>
+    <head>
+        <title> Team-Flashkick Blog </title>
+	<link rel="stylesheet" type="text/css" media="screen" href="/site_media/style.css">
+	<script type="text/javascript" src="/site_media/ckeditor/media/ckeditor/ckeditor/ckeditor.js"></script>
+    </head>
+    <body>
+<!--Random kommentar
+-->
+	<div id="head"><a href= /><div id="logga"></div></a></div>
+	<div id="container">
+	<a href= /laddaUppBild/>laddaUppBild!</a>
+	<a href= /photologue/>photologue!</a>
+	<a href= /admin/>Admin!</a>
+	<a href= /addPost/>Skriv ett inlägg</a>
+	<a href= /inloggad/>inloggad!</a>
+	<a href= /imageViewer/>imageViewer!</a>
+	<a href= /login/>Logga in!</a>Hej hej
+            {% for skiva in alla_skivor %}
+                <div class="post">
+                    <rubrik><a href= /{{ skiva.id }}>{{ skiva.namn|safe }}</a></rubrik><br>
+		    <datum>Publicerad:{{ skiva.pub_date }}<br>
+                    {% if skiva.pub_date != skiva.up_date %}
+                        <datum>Uppdaterad:{{ skiva.up_date }}<br>
+                    {% else %}
+                    {% endif %}
+		    <br></datum></datum>
+                    <div class="text">{{ skiva.body|safe }}</div><br>
+		    <a href= /{{ skiva.id }}>Kommentera</a><br>
+		</div>
+            {% endfor %}
+	 
+   <div class="text">
+            <!--Random kommentar
+			<form action="/addSkiva/" method="post">
+                    Titel<br>
+                    <input type="text" name="skiv_namn" value="Titel"/><br>
+                    Text<br>
+		    <textarea id="editor1" name="body_text">&lt;p&gt;Text&lt;/p&gt;</textarea>
+			<script type="text/javascript">
+				CKEDITOR.replace( 'editor1' );
+			</script>
+                    <input type="submit" value="skicka data"/>
+            </form>
+	    <form action="/addPic/" method="post">
+		Bild<br>
+		<input type="file" name="file"
+		Titel<br>
+		<input type="text" name="titel"/><br>
+		<input type="submit" value="skicka data"/>
+            </form>-->
+			<form enctype="multipart/form-data" action="/" method="post">{% csrf_token %}
+				{{ form.as_p|safe }}
+				<input type="submit" value="Publicera inlägg" />
+			</form>
+			</div></div>
+    </body>
+</html>

@@ -1,0 +1,51 @@
+{% extends "bas.html" %}
+
+{% block title %}Team-Flashkick Blog - {{ post.titel }} {% endblock %}
+
+{% block content %}
+
+	<div class="post">
+		<a href= />Back</a><br>
+		<rubrik>{{ post.titel|safe }}</rubrik><br>
+		<datum>Publicerad:{{ post.pub_date }}<br>
+			{% if post.pub_date != post.up_date %}
+			Uppdaterad:{{ post.up_date }}<br>
+			{% else %}
+			{% endif %}
+	<br></datum>
+	<div class="text">{{ post.body|safe }}</div><br>
+	</div>
+	<div class="text">
+	{% if request.user.is_authenticated %}
+		<form type="POST" action="/uppdatePost/">
+			Titel<br>
+				<TEXTAREA NAME="titel" COLS=30 ROWS=1 WRAP="virtual">{{ post.titel|safe}}</TEXTAREA><br>
+			Text<br>
+			<textarea id="editor1" name="body">&lt;p&gt;{{ post.body|safe}}&lt;/p&gt;</textarea>
+			<script type="text/javascript">
+				CKEDITOR.replace( 'editor1' );
+			</script>
+			<input type="hidden" name="id" value= "{{post.id}}">
+				<input type="submit" value="Uppdatera innleg"/>
+        </form>
+	{% else %}
+		<form type="POST" action="/addComment/">
+			Namn<br>
+			<input type="text" name="name"/><br>
+			<input type="hidden" name="id" value="{{post.id}}">
+			Kommentar<br>
+			<TEXTAREA NAME="comment" COLS=63 ROWS=7 WRAP="virtual"></TEXTAREA><br>
+			<input type="submit" value="skicka kommentar">
+		</form>
+	{% endif %}
+		
+	</div><div class="comment">
+		{% for comments in commentsa %}
+			<namn>Skapad av {{comments.name}} {{comments.date}}</namn><br>
+			{% if request.user.is_authenticated %}
+		     <a href= /{{ comments.id }}/deleteComment>Ta bort detta inlegg</a><br>
+			{% endif %}
+			<div class="text">{{comments.comment}}</div><br>
+		{% endfor %}
+	</div>
+{% endblock %}

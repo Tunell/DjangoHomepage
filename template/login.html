@@ -1,0 +1,17 @@
+﻿{% extends "bas.html" %}
+
+{% block title %}Team-Flashkick Blog - Login{% endblock %}
+
+{% block content %}
+	<center>Inloggning för medlammar i Team-Flashkick
+        
+		
+            <form action="/loggarIn/" method="post">
+				Användarnamn<br>
+				<input TYPE=text NAME="username" COLS=15 ROWS=1 WRAP="virtual"><br>
+				Lösenord<br>
+                <input TYPE=PASSWORD NAME="password" COLS=15 ROWS=1 WRAP="virtual"><br>
+                <input type="submit" value="Logga in"/></td>
+            </form>
+	</center>
+{% endblock %}

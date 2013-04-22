@@ -1,0 +1,29 @@
+﻿{% extends "bas.html" %}
+
+{% block title %}Team-Flashkick Blog{% endblock %}
+
+{% block meny %}{% endblock %}
+{% block content %}
+	{% for news in all_news %}
+		<div class="post">
+            <rubrik><a href= /{{ news.id }}>{{ news.titel|safe }}</a></rubrik><br>
+		    <datum>Publicerad:{{ news.pub_date }}<br></datum>
+            {% if news.pub_date != news.up_date %}
+                <datum>Uppdaterad:{{ news.up_date }}<br></datum>
+			{% else %}
+			{% endif %}
+		</div>
+    {% endfor %}
+
+	
+ <!--Random kommentar	   
+			
+	    <form action="/addPic/" method="post">
+			Bild<br>
+			<input type="file" name="file"
+			Titel<br>
+			<input type="text" name="titel"/><br>
+			<input type="submit" value="skicka data"/>
+        </form>-->
+
+{% endblock %}

@@ -1,0 +1,14 @@
+﻿{% extends "bas.html" %}
+
+{% block title %}Team-Flashkick Blog - Skriv blogg inlägg{% endblock %}
+
+{% block content %}
+
+	<a href= /admin/>Admin</a><br>
+	<a href= /addPost/>Skriv ett inlagg</a><br>
+	<a href= /logout/>Logga ut</a><br>
+			<form enctype="multipart/form-data" action="/addPost/" method="post">{% csrf_token %}
+				{{ form.as_p }}
+				<input type="submit" value="Publicera inlägg" />
+			</form>
+{% endblock %}

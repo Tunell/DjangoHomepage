@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title> {% block title %}{% endblock %} </title>
+    </head>
+    <body>
+	<div class="comment">
+		{% for comments in commentsa %}
+			<namn>Skapad av {{comments.name}} {{comments.date}}</namn><br>
+			<div class="text">{{comments.comment}}</div><br>
+		{% endfor %}
+	</div>
+	<div class="text">
+		<form type="POST" action="/addComment/">
+			Namn<br>
+			<input type="text" name="name"/><br>
+			<input type="hidden" name="id" value="{{post.id}}">
+			Kommentar<br>
+			<TEXTAREA NAME="comment" COLS=63 ROWS=7 WRAP="virtual"></TEXTAREA><br>
+			<input type="submit" value="skicka kommentar">
+		</form>
+		
+	</div>
+    </body>
+</html>

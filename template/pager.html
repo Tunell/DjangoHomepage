@@ -1,0 +1,40 @@
+﻿{% extends "bas.html" %}
+
+{% block title %}Team-Flashkick Blog{% endblock %}
+
+{% block meny %}{% endblock %}
+{% block content %}
+
+	<a href= /login/>Logga in</a>
+
+	{% for post in posts.object_list %}
+		<div class="post">
+            <rubrik><a href= /{{ post.id }}>{{ post.titel|safe }}</a></rubrik><br>
+		    <datum>Publicerad:{{ post.pub_date }}<br></datum>
+            {% if post.pub_date != post.up_date %}
+                <datum>Uppdaterad:{{ post.up_date }}<br></datum>
+			{% else %}
+			{% endif %}
+		    <br>
+            <div class="text">{{ post.body|safe }}</div><br>
+		    <a href= /{{ post.id }}>Kommentera</a><br>
+		</div>
+	{% endfor %}
+
+<div class="pagination">
+    <span class="step-links">
+        {% if posts.has_previous %}
+            <a href="?page={{ posts.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
+        </span>
+
+        {% if posts.has_next %}
+            <a href="?page={{ posts.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
+
+{% endblock %}

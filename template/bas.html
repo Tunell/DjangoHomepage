@@ -1,0 +1,98 @@
+﻿<html>
+    <head>
+        <title> {% block title %}{% endblock %} </title>
+	<link rel="stylesheet" type="text/css" media="screen" href="/site_media/style.css">
+	<script type="text/javascript" src="/site_media/ckeditor/media/ckeditor/ckeditor/ckeditor.js"></script>
+	<script type="text/javascript" src="/site_media/rokbox/mootools-release-1.11.js"></script>
+	<script type="text/javascript" src="/site_media/rokbox/rokbox.js"></script>
+	<script type="text/javascript" src="/site_media/dropdown.js"></script>
+	<link href="/site_media/rokbox/themes/light/rokbox-style.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="/site_media/rokbox/themes/light/rokbox-config.js"></script>
+	
+    </head>
+    <body>
+	<div id="sidan">
+	<div id="head"><a href= /news/><div id="logga"><img src=../site_media/tfk.png></div></a><div id="plats"></div><div id="sverige"></div></div>
+	<div id="menu">
+		<ul id="meny">
+		{% if request.user.is_authenticated %}
+			<li><a href="/news/" 
+			onmouseover="mopen('m1')" 
+			onmouseout="mclosetime()">Nyheter</a>
+			<div id="m1" 
+				onmouseover="mcancelclosetime()" 
+				onmouseout="mclosetime()">
+			<a href= "/addNews/">Skriv Nyhet</a>
+			<a href= "/allNews/">Inläggs lista</a>
+			</div>
+		</li>
+		{% else %}
+			<li><a href= /news/>Nyheter</a></li>
+		{% endif %}
+		
+		{% if request.user.is_authenticated %}
+			<li><a href="/" 
+			onmouseover="mopen('m3')" 
+			onmouseout="mclosetime()">Blogg</a>
+			<div id="m3" 
+				onmouseover="mcancelclosetime()" 
+				onmouseout="mclosetime()">
+			<a href= "/addPost/">Skriv blogginlägg</a>
+			<a href= "/allPosts/">Inläggs lista</a>
+			</div>
+		</li>
+		{% else %}
+			<li><a href= />Blogg</a></li>
+		{% endif %}
+		
+		
+		<li><a href="/filmer/" 
+			onmouseover="mopen('m4')" 
+			onmouseout="mclosetime()">Media</a>
+			<div id="m4" 
+				onmouseover="mcancelclosetime()" 
+				onmouseout="mclosetime()">
+			<a href= /bilder/>Bilder</a>
+			<a href= /filmer/>Filmer</a>
+			</div>
+		</li>
+		
+		<li><a href="/omOss/" 
+			onmouseover="mopen('m2')" 
+			onmouseout="mclosetime()">Info</a>
+			<div id="m2" 
+				onmouseover="mcancelclosetime()" 
+				onmouseout="mclosetime()">
+			<a href= /omOss/>Om Oss</a>
+			<a href= /medlemmar/>Medlemmar</a>
+			<a href= /links/>Länkar</a>
+			<a href= /kontakt/>Kontakt</a>
+			</div>
+		</li>
+		<li><a href= /guestbook/>Gästbok</a></li>
+		
+		{% if request.user.is_authenticated %}
+			<li><a href= /admin/>Admin</a></li>
+			<li><a href= /logout/>Logga ut</a></li>
+		{% else %}
+			<li><a href= /login/>Logga in</a></li>
+		{% endif %}
+        </div></ul><div style="clear:both"></div></center>
+	<div id="container">
+		{% block meny %}{% endblock %}
+<!--
+		<a href= /laddaUppBild/>laddaUppBild!</a>
+		<a href= /photologue/>photologue!</a>
+		<a href= /admin/>Admin!</a>
+		<a href= /addPost/>Skriv ett inlägg</a>
+		<a href= /inloggad/>inloggad!</a>
+		<a href= /imageViewer/>imageViewer!</a>
+		<a href= /login/>Logga in!</a>
+-->
+
+		
+	{% block content %}{% endblock %}
+	</div>
+</div>
+    </body>
+</html>

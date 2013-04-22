@@ -1,0 +1,279 @@
+body{
+margin-left: 10px;
+background: #222;
+text-decoration:none;
+list-style: none;
+background: url('/site_media/bg.jpg');
+background-color: black;
+background-repeat: repeat-x;
+}
+
+#head{
+width: 900px; height: 90px; 
+margin: 0 auto;
+text-align:center;
+}
+
+#logga{
+width: 441px; height: 80pxpx;
+background: url('/site_media/tfk.png');
+display: block;
+margin: 0 auto;
+float: left;
+margin-left: 40;
+}
+
+#plats{
+width: 40; height: 80px;
+background: url('/');
+display: block;
+margin: 0 auto;
+float: left;
+margin-left: 40;
+}
+
+#sverige{
+width: 60px; height: 40px;
+background: url('/site_media/sverige.gif');
+display: block;
+margin: 0 auto;
+float: right;
+margin-right: 40;
+margin-top: 30
+}
+
+#sidan{
+width: 900px;height: auto;
+margin: 0 auto;
+}
+
+#container{
+width: 780px;height: auto; min-height:450;
+color: #ddd;
+margin: 0 auto;
+margin-top: 0px;
+}
+
+#menu{
+width:900px;height: auto;
+background: #111;
+margin: 0 auto;
+margin-top: 0px;
+text-align: center;
+}
+
+a:link    {
+text-decoration:  none;
+color:            #dff;
+font: 12px "times new roman" bold;
+font-weight:      bold;
+} 
+
+a:visited {
+text-decoration:  none;
+color:            #dff;
+font: 12px "times new roman" bold;
+font-weight:      bold;
+} 
+
+a:hover   {
+text-decoration:  none;
+font: 12px "times new roman" bold;
+font-weight:      bold;
+color:            #ccc;
+} 
+  
+a:active  {
+text-decoration:  none;
+font: 12px "times new roman" bold;
+font-weight:      bold;
+color:            #ccc;
+}
+
+ .news{
+width: 780px; height:auto; min-height:450;
+background: url('/site_media/news.jpg');
+border-color:#black;
+color:#ddd;
+border: 1px solid #151515}
+}
+
+.news rubrik{
+font: 20px "Trebuchet MS";
+margin-left: 10px;
+padding-top: 0px;
+}
+
+.news datum{
+font: 10px "helvetica";
+margin-left: 10px;
+}
+
+.news_text{
+width: 380px; 
+font: 12px "times new roman";
+margin-left: 10px;
+margin-right: 10px;
+}
+
+.history{
+width: 780px; height:auto; min-height: 350;
+background: url('/');
+padding-top: 5px;
+color:#ccc;
+border-width:1px;
+background-color:#222;
+border: 1px solid #151515
+}
+
+.history right{
+float:right;
+}
+
+.history left{
+float:left;
+}
+
+.medlemmar{
+width: 800px; height:auto; min-height:450;
+background: url('/');
+padding-top: 5px;
+color:#ccc;
+}
+
+.bilder{
+padding-top: 10px;
+width: 800px; height:auto; min-height:450;
+background: url('/site_media/bilder.png');
+color:#ccc;
+}
+
+.filmer{
+padding-top: 10px;
+width: 800px; height:auto; min-height:450;
+background: url('/site_media/filmer.png');
+color:#ccc;
+}
+
+.links{
+width: 800px; height:auto; min-height:450;
+background: url('/site_media/links.png');
+color:#ccc;
+}
+
+.post{
+width: 800px; height:auto;
+background: #222;
+padding-top: 5px;
+border-color:#aaa;
+border-width:2px;
+border-bottom-style:dotted;
+}
+
+.post a{
+font: 12px "Trebuchet MS";
+margin-left: 10px;
+padding-top: 5px;
+padding-bottom: 10px;
+}
+
+.rubrik a{
+font: 20px "Trebuchet MS";
+margin-left: 10px;
+padding-top: 10px;
+}
+
+.post datum{
+font: 10px "helvetica";
+margin-left: 10px;
+}
+
+.comment{
+width: 780px; height:auto;
+background: #819d7f;
+margin-bottom: 10px;
+margin-top: 10px;
+margin-left: 10px;
+border-color:#111111;
+border-width:1px;
+border-style:solid;
+}
+.comment namn{
+font: 10px "helvetica";
+padding-top: 10px;
+margin-left: 10px;
+}
+.text{
+font: 10px "verdana";
+width: autopx;
+margin-left: 10px;
+margin-right: 10px;
+}
+
+#meny{
+margin: 0;
+padding: 0;
+}
+
+#meny ul{
+margin: 0 auto;
+float: right;
+list-style-type:square
+}
+
+
+#meny li
+{
+margin: 0;
+padding: 0;
+list-style: none;
+float: left;
+font: bold 11px arial
+}
+
+#meny li a
+{
+display: block;
+margin: 0 1px 0 0;
+padding: 4px 0px;
+width: 149px;
+background: #111;
+color: #FFF;
+text-align: center;
+text-decoration: none
+}
+
+#meny li a:hover
+{
+background: #42b133}
+
+#meny div
+{
+position: absolute;
+visibility: hidden;
+margin: 0;
+padding: 0;
+background: #EAEBD8;
+border: 1px solid #3a5e35
+}
+
+	#meny div a
+	{
+	position: relative;
+	display: block;
+	margin: 0;
+	padding: 5px 10px;
+	width: auto;
+	white-space: nowrap;
+	text-align: left;
+	text-decoration: none;
+	background: #EAEBD8;
+	color: #3a5e35;
+	font: 11px arial
+	}
+
+	#meny div a:hover
+	{
+	background: #42b133;
+	color: #FFF
+	}

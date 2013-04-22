@@ -1,0 +1,39 @@
+﻿{% extends "bas.html" %}
+
+{% block title %}Team-Flashkick Blog{% endblock %}
+
+{% block meny %}{% endblock %}
+{% block content %}
+	
+	{% topPost %}
+	<a href= /login/>Logga in</a>
+
+	{% for post in posts %}
+		<div class="post">
+            <rubrik><a href= /{{ post.id }}>{{ post.titel|safe }}</a></rubrik><br>
+		    <datum>Publicerad:{{ post.pub_date }}<br></datum>
+            {% if post.pub_date != post.up_date %}
+                <datum>Uppdaterad:{{ post.up_date }}<br></datum>
+			{% else %}
+			{% endif %}
+		    <br>
+            <div class="text">{{ post.body|safe }}</div><br>
+		    <a href= /{{ post.id }}>Kommentera</a><br>
+		</div>
+    {% endfor %}
+	{% for siffra  in (post.id/10) %}
+		<a href= /view/1{{+siffra}}/>{{siffra}}</a><br>
+		siffra += 1
+		{% endfor %}
+		<a href= /view/>view</a><br>
+		<a href= /view/1/>1</a><br>
+
+	
+ <!--Random kommentar	   
+        {% for siffra  in (post.id/10) %}
+		<a href= /view/1{{+siffra}}/>{{siffra}}</a><br>
+		siffra += 1
+		{% endfor %}
+		-->
+
+{% endblock %}

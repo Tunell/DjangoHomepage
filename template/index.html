@@ -1,0 +1,46 @@
+﻿{% extends "bas.html" %}
+
+{% block title %}Team-Flashkick Blog{% endblock %}
+
+{% block meny %}{% endblock %}
+{% block content %}
+	{% for post in posts.object_list %}
+		<div class="post">
+            <div class="rubrik"><a href= /{{ post.id }}>{{ post.titel|safe }}</a></div>
+			{% if request.user.is_authenticated %}
+			<a href= /{{ post.id }}/deletePost>Ta bort detta inlegg</a><br>
+			{% endif %}
+            {% if post.pub_date != post.up_date %}
+                <datum>Uppdaterad:{{ post.up_date }}</datum>
+			{% else %}
+				<datum>Publicerad:{{ post.pub_date }}</datum>
+			{% endif %}
+            <div class="text">{{ post.body|safe }}</div>
+			{% if request.user.is_authenticated %}
+		    <a href= /{{ post.id }}>Redigera</a>
+			{% else %}
+			<a href="/{{ post.id }}/kommentera" rel="rokbox[561 400]()" title="Kommentarer :: {{ post.titel|safe }}">Kommentarer ({{antalKommentarer}})</a>
+			{% endif %}
+		</div>
+	{% endfor %}
+
+<div class="pagination">
+    <span class="step-links">
+        {% if posts.has_previous %}
+            <a href="?page={{ posts.previous_page_number }}">föregående</a>
+        {% endif %}
+
+        <span class="current">
+            Sida {{ posts.number }} av {{ posts.paginator.num_pages }}
+        </span>
+
+        {% if posts.has_next %}
+            <a href="?page={{ posts.next_page_number }}">nästa</a>
+        {% endif %}
+    </span>
+		<br><a href= /allPosts/>Inläggs lista</a>
+</div>
+
+	
+
+{% endblock %}

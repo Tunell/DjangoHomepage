@@ -1,0 +1,45 @@
+﻿{% extends "bas.html" %}
+
+{% block title %}Team-Flashkick{% endblock %}
+
+{% block content %}
+
+		<div class="news">
+{% if request.user.is_authenticated %}
+	{% else %}
+	{% endif %}
+	{% for news in news.object_list %}
+            <rubrik>{{ news.titel|safe }}</rubrik>
+			{% if request.user.is_authenticated %}
+			<a href= /{{ news.id }}/deleteNews>Ta bort detta inlegg</a>
+			{% endif %}
+			<br>
+            {% if news.pub_date != news.up_date %}
+                <datum>Uppdaterad:{{ news.up_date }}</datum>
+			{% else %}
+				<datum>Publicerad:{{ news.pub_date }}</datum>
+			{% endif %}
+		    <br>
+            <div class="news_text">{{ news.body|safe }}</div>
+			{% if request.user.is_authenticated %}
+		    <a href= /{{ news.id }}/edit/>Redigera</a><br>
+			{% endif %}
+	{% endfor %}
+
+		
+<div class="pagination">
+    <span class="step-links">
+        {% if news.has_previous %}
+            <a href="?page={{ news.previous_page_number }}">Visa nyare inlägg</a>
+        {% endif %}
+
+        {% if news.has_next %}
+            <a href="?page={{ news.next_page_number }}">Visa äldre inlägg</a>
+        {% endif %}
+    </span>
+		<br><a href= /allNews/>Inläggs lista</a>
+</div></div>
+
+	
+
+{% endblock %}

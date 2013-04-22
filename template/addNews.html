@@ -1,0 +1,10 @@
+﻿{% extends "bas.html" %}
+
+{% block title %}Team-Flashkick - Skriv en nyhet{% endblock %}
+
+{% block content %}
+			<form enctype="multipart/form-data" action="/addNews/" method="post">{% csrf_token %}
+				{{ form.as_p }}
+				<input type="submit" value="Publicera inlägg" />
+			</form>
+{% endblock %}

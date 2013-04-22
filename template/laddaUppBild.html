@@ -1,0 +1,11 @@
+{% extends "bas.html" %}
+
+{% block title %}Team-Flashkick Blog - imageViewer{% endblock %}
+
+{% block content %}
+	Hej hej her kan du ladda upp bilder 
+	<form enctype="multipart/form-data" action="/imageViewer/" method="post">{% csrf_token %}
+		{{ form.as_p }}
+		<input type="submit" value="Submit" />
+	</form>
+{% endblock %}
